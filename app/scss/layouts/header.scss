@@ -1,0 +1,20 @@
+@use "../util" as *;
+
+.main-header {
+  padding-top: rem(48);
+  padding-bottom: rem(64);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: url("../images/Símbolo_Pokémon_\(Melee\).png") no-repeat center;
+    transform: translate(50%, -20%) scale(3);
+    background-size: contain;
+    opacity: 0.2;
+  }
+}

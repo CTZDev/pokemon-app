@@ -23,5 +23,8 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "sass": "^1.38.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }

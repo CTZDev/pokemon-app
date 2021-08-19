@@ -9,29 +9,41 @@
     <title>Pokemon</title>
   </head>
   <body>
-    <header>
-      <h1>Pokedex</h1>
+    <header class="main-header">
+      <div class="wrapper">
+        <h1>Pokedex</h1>
+      </div>
     </header>
     <main>
-      <form action="/" method="GET" id="form-pokemon">
-        <div class="form-group">
-          <label for=""></label>
-          <input type="text" name="txtnamePokemon" placeholder="Name of Pokemon" />
-        </div>
-        <div class="form-group">
-          <select name="" id="">
-            <option value="sfsd">sdfsd</option>
-          </select>
+      <form action="/" id="form-pokemon">
+        <div class="wrapper">
+          <div class="form-group">
+            <label for=""></label>
+            <input type="text" name="txtname" placeholder="Name of Pokemon" />
+          </div>
+          <div class="form-group">
+            <select name="" id="">
+              <option value="sfsd">sdfsd</option>
+            </select>
+          </div>
         </div>
       </form>
       <section class="pokemon">
-        <article class="pokemon-item">
-          <img src="" alt="" />
-          <div class="pokemon-features">
-            <p></p>
-          </div>
-        </article>
+        <div class="wrapper">
+          <article class="pokemon-card">
+            <div class="pokemon-header">
+              <h2>Name pokemon</h2>
+            </div>
+            <div class="pokemon-body">
+              <div class="pokemon-features">
+                <!-- Crado dinamicamente (tipos)-->
+              </div>
+              <img src="./images/profile-1.jpg" alt="" />
+            </div>
+          </article>
+        </div>
       </section>
     </main>
+    <template id="pokemon-card"></template>
   </body>
 </html>
