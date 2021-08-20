@@ -1,0 +1,17 @@
+@use "../util" as *;
+
+.form-pokemon {
+  border: 1px solid red;
+}
+
+.form-container {
+  flex-wrap: wrap;
+  gap: rem(16);
+}
+
+.form-group {
+  & h2 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+}

@@ -13,8 +13,9 @@
     left: 0;
     bottom: 0;
     background: url("../images/Símbolo_Pokémon_\(Melee\).png") no-repeat center;
-    transform: translate(50%, -20%) scale(3);
+    transform: translate(50%, -20%) scale(3.2);
     background-size: contain;
     opacity: 0.2;
+    z-index: -1;
   }
 }

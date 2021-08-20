@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="dist/style.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
     <script defer src="dist/script.js"></script>
-    <title>Pokemon</title>
+    <title>List of Pokemons</title>
   </head>
   <body>
     <header class="main-header">
@@ -15,16 +16,22 @@
       </div>
     </header>
     <main>
-      <form action="/" id="form-pokemon">
+      <form action="/" id="form-pokemon" class="form-pokemon">
         <div class="wrapper">
-          <div class="form-group">
-            <label for=""></label>
-            <input type="text" name="txtname" placeholder="Name of Pokemon" />
-          </div>
-          <div class="form-group">
-            <select name="" id="">
-              <option value="sfsd">sdfsd</option>
-            </select>
+          <div class="form-container flex flex-ai-c flex-jc-sb">
+            <div class="select-wrapper">
+              <div class="select">
+                <div class="select__trigger">
+                  <span>Tesla</span>
+                  <div class="arrow"></div>
+                </div>
+                <ul class="custom-options">
+                  <li class="custom-option selected" data-value="tesla">Tesla</li>
+                  <li class="custom-option" data-value="volvo">Volvo</li>
+                  <li class="custom-option" data-value="mercedes">Mercedes</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </form>
