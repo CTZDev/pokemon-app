@@ -56,20 +56,87 @@
       </form>
       <section class="pokemon">
         <div class="wrapper">
-          <article class="pokemon-card">
-            <div class="pokemon-header">
-              <h2>Name pokemon</h2>
-            </div>
-            <div class="pokemon-body">
-              <div class="pokemon-features">
-                <!-- Crado dinamicamente (tipos)-->
+          <div class="pokemon-cards">
+            <article class="pokemon-card">
+              <div class="pokemon-header">
+                <div class="pokemon-header-content">
+                  <h2 class="pokemon-header-title">#001</h2>
+                  <figure class="pokemon-header-favorite">
+                    <img width="28" height="28" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
+                  </figure>
+                </div>
+                <figure class="pokemon-header-img">
+                  <img src="./images/profile-1.jpg" alt="" loading="lazy" />
+                </figure>
               </div>
-              <img src="./images/profile-1.jpg" alt="" />
-            </div>
-          </article>
+              <div class="pokemon-body">
+                <div class="pokemon-body-name">
+                  <p>Name Pokemon</p>
+                </div>
+                <ul class="pokemon-body-types">
+                  <li>Grass</li>
+                  <li>Poison</li>
+                </ul>
+              </div>
+              <div class="pokemon-footer">
+                <button class="btn btn-info">More Info</button>
+              </div>
+            </article>
+            <article class="pokemon-card">
+              <div class="pokemon-header">
+                <div class="pokemon-header-content">
+                  <h2 class="pokemon-header-title">#001</h2>
+                  <figure class="pokemon-header-favorite">
+                    <img width="28" height="28" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
+                  </figure>
+                </div>
+                <figure class="pokemon-header-img">
+                  <img src="./images/profile-1.jpg" alt="" loading="lazy" />
+                </figure>
+              </div>
+              <div class="pokemon-body">
+                <div class="pokemon-body-name">
+                  <p>Name Pokemon</p>
+                </div>
+                <ul class="pokemon-body-types">
+                  <li>Grass</li>
+                  <li>Poison</li>
+                </ul>
+              </div>
+              <div class="pokemon-footer">
+                <button class="btn btn-info">More Info</button>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
     </main>
-    <template id="pokemon-card"></template>
+    <template id="pokemon-card">
+      <article class="pokemon-card">
+        <div class="pokemon-header">
+          <div class="pokemon-header-content">
+            <h2 class="pokemon-header-title">#001</h2>
+            <figure class="pokemon-header-favorite">
+              <img width="28" height="28" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
+            </figure>
+          </div>
+          <figure class="pokemon-header-img">
+            <img src="./images/profile-1.jpg" alt="" loading="lazy" />
+          </figure>
+        </div>
+        <div class="pokemon-body">
+          <div class="pokemon-body-name">
+            <p>Name Pokemon</p>
+          </div>
+          <ul class="pokemon-body-types">
+            <li>Grass</li>
+            <li>Poison</li>
+          </ul>
+        </div>
+        <div class="pokemon-footer">
+          <button class="btn btn-info">More Info</button>
+        </div>
+      </article>
+    </template>
   </body>
 </html>

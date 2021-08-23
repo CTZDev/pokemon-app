@@ -1,0 +1,82 @@
+@use "../util" as *;
+
+.pokemon {
+  max-width: rem(1440);
+  margin: 0 auto;
+
+  &-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+    align-items: center;
+    justify-content: center;
+    gap: rem(28);
+  }
+
+  &-card {
+    border: 2px solid var(--primary-color);
+    border-radius: rem(12);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--primary-color);
+      transform: rotate(45deg) translate(-35%, -35%);
+      z-index: -1;
+    }
+  }
+
+  &-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8rem;
+    margin-bottom: 1.2rem;
+    color: var(--clr-white);
+
+    & > h2 {
+      font-weight: normal;
+    }
+  }
+
+  &-header-img {
+    margin-bottom: 1.2rem;
+    & > img {
+      margin: 0 auto;
+      filter: drop-shadow(4px 4px 4px black);
+    }
+  }
+
+  &-body {
+    margin-bottom: rem(24);
+    &-name {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    &-types {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: rem(32);
+
+      & > * {
+        border-radius: rem(8);
+        padding: rem(8) rem(16);
+        font-weight: bold;
+        box-shadow: 0 0 rem(6) 0 rgba(0, 0, 0, 0.2);
+        background-color: var(--clr-white);
+        color: var(--primary-color);
+      }
+    }
+  }
+}

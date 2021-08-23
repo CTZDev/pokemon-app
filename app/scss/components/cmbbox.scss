@@ -1,7 +1,5 @@
 @use "../util" as *;
 
-$white: #fff;
-
 .select {
   display: flex;
   flex-direction: column;
@@ -22,7 +20,7 @@ $white: #fff;
     justify-content: space-between;
     padding: rem(8);
     font-size: 1.1em;
-    background: $white;
+    background: var(--clr-white);
     cursor: pointer;
   }
 
@@ -49,25 +47,27 @@ $white: #fff;
   left: 0;
   right: 0;
   border: 1px solid rgba(black, 0.15);
-  background: $white;
+  border-top: 0;
+  background: var(--clr-white);
   transition: opacity 300ms, visibility 300ms;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  z-index: 1;
 }
 
 .custom-option {
   padding: rem(12) rem(8);
   cursor: pointer;
-  transition: background-color 500ms;
+  // transition: background-color 200ms;
 
   &:hover {
-    background-color: #dfd9d9;
+    background-color: var(--shadow-color);
   }
 
   &.selected {
-    color: $white;
-    background-color: #f95868;
+    color: var(--clr-white);
+    background-color: var(--primary-color);
   }
 }
 
@@ -84,7 +84,7 @@ $white: #fff;
     bottom: 0;
     width: 0.15rem;
     height: 100%;
-    background-color: #394a6d;
+    background-color: var(--primary-color);
     transition: transform 300ms, left 300ms;
   }
 
