@@ -13,12 +13,12 @@
   }
 
   &-card {
-    border: 2px solid var(--primary-color);
     border-radius: rem(12);
     padding: 1.5rem 1rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    box-shadow: 0px 4px 5px -4px black;
 
     &::before {
       content: "";

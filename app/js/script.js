@@ -1,7 +1,11 @@
+//Codigo para la traspilación de funciones asincronas
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+//Generación de codigo propio
 import getDataPokemon from "./modules/pokemon_card.js";
-import selectedMenu from "./modules/combo_selected";
+import getTypePokemon from "./modules/combo_selected.js";
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  selectedMenu();
   getDataPokemon();
+  getTypePokemon();
 });
