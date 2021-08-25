@@ -22,6 +22,16 @@
     font-size: 1.1em;
     background: var(--clr-white);
     cursor: pointer;
+
+    &-content {
+      display: flex;
+      align-items: center;
+      gap: rem(8);
+
+      & > img {
+        width: rem(24);
+      }
+    }
   }
 
   &.open {
@@ -68,7 +78,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
+    border-radius: rem(8);
     background-color: var(--primary-color);
   }
 }
@@ -77,6 +87,17 @@
   padding: rem(12) rem(8);
   cursor: pointer;
   transition: background-color 200ms;
+  display: flex;
+  align-items: center;
+  gap: rem(6);
+
+  & > * {
+    pointer-events: none;
+  }
+
+  & > img {
+    width: rem(30);
+  }
 
   &:hover {
     background-color: var(--shadow-color);

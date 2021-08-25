@@ -1,9 +1,9 @@
 const d = document;
 const $fragment = d.createDocumentFragment();
 
-const getTypePokemon = async (e) => {
+const getTypePokemon = async () => {
   try {
-    let url = "https://pokeapi.co/api/v2/type";
+    let url = "https://pokeapi.co/api/v2/type?limit=18";
     const response = await fetch(url);
     if (!response.ok) throw { status: response.status, statusText: response.statusText };
     const data = await response.json();
@@ -17,22 +17,27 @@ const getTypePokemon = async (e) => {
 
 const showTypePokemon = (typesOfPokemon) => {
   const $containerTypeOfPokemon = d.querySelector("ul[data-custom-types]");
+
   typesOfPokemon.map(({ name }, i) => {
     const $li = d.createElement("li");
+    const $span = d.createElement("span");
+    const $img = d.createElement("img");
     if (i === 0) $li.classList.add("custom-option", "selected");
-    $li.textContent = changeTextCapitalized(name);
+    $span.textContent = changeTextCapitalized(name);
+    $img.setAttribute("src", `./images/type-pokemons/Icon_${name}.png`);
+    $img.setAttribute("alt", name);
+    $li.append($img, $span);
     $li.classList.add("custom-option");
     $li.dataset.value = name;
     $fragment.append($li);
   });
   $containerTypeOfPokemon.append($fragment);
-  selectedMenu(typesOfPokemon[0]);
+  selectedMenuPokemon(typesOfPokemon[0]);
 };
 
-const selectedMenu = (firstTypePokemon) => {
+const selectedMenuPokemon = (firstTypePokemon) => {
   const wrapper = ".select-wrapper";
-  const $selectTypePokemon = d.querySelector(".select-trigger > span");
-  $selectTypePokemon.textContent = changeTextCapitalized(firstTypePokemon?.name);
+  loadingTypePokemon(firstTypePokemon);
 
   d.addEventListener("click", (e) => {
     if (e.target.matches(`${wrapper} *`)) {
@@ -44,12 +49,11 @@ const selectedMenu = (firstTypePokemon) => {
       const $option = e.target;
       const $listOptions = $option.parentElement.children;
       const $parentOption = $option.closest(".select");
-      const $customSelectText = $parentOption.querySelector(".select-trigger > span");
 
       [...$listOptions].map((option) => option.classList.remove("selected"));
       $option.classList.add("selected");
-      $customSelectText.textContent = $option.textContent;
-      console.log($option);
+      const $textOption = $option.querySelector("span").textContent;
+      loadingTypePokemon(null, $parentOption, $textOption);
     }
 
     if (!e.target.matches(`${wrapper} *`)) {
@@ -59,6 +63,16 @@ const selectedMenu = (firstTypePokemon) => {
       }
     }
   });
+};
+
+const loadingTypePokemon = (firstTypePokemon = null, parentElement = d, textOption = null) => {
+  const $selectTypePokemon = parentElement.querySelector(".select-trigger-content > span");
+  const $selectTypePokemonIcon = parentElement.querySelector(".select-trigger-content > img");
+
+  const nameTypePokemon = firstTypePokemon?.name || textOption;
+  $selectTypePokemon.textContent = changeTextCapitalized(nameTypePokemon);
+  $selectTypePokemonIcon.setAttribute("src", `./images/type-pokemons/Icon_${nameTypePokemon}.png`);
+  $selectTypePokemonIcon.setAttribute("alt", nameTypePokemon);
 };
 
 const changeTextCapitalized = (text) => {
