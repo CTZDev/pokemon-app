@@ -1,0 +1,27 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0) translateY(0) scale(1);
+  }
+  25% {
+    transform: rotate(4deg) translateY(4px) scale(1.05);
+  }
+  50% {
+    transform: rotate(0) translateY(0) scale(1);
+  }
+  75% {
+    transform: rotate(-4deg) translateY(-4px) scale(1.05);
+  }
+  100% {
+    transform: rotate(0) translateY(0) scale(1);
+  }
+}
+
+@keyframes spinner-center {
+  0% {
+    background-color: white;
+  }
+
+  100% {
+    background-color: red;
+  }
+}

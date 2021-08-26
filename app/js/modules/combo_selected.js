@@ -9,9 +9,9 @@ const getTypePokemon = async () => {
     const data = await response.json();
     const typesOfPokemon = await data.results;
     showTypePokemon(typesOfPokemon);
-    console.log(data.results);
   } catch (error) {
-    console.log(error);
+    let message = error.statusText || "Ocurrio un error inesperado";
+    alert(`Error ${error.status} : ${message}`);
   }
 };
 

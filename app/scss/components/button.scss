@@ -11,8 +11,16 @@
   transition: transform 200ms ease;
   font-weight: bold;
   font-family: var(--font-family);
-  background-color: #f95868;
-  color: #fff;
+  opacity: 0.75;
+  color: var(--clr-white);
+  text-shadow: 1px 1px 4px black;
+  box-shadow: 0 0 5px -1px black;
+
+  &--actions {
+    min-width: 6.4rem;
+    font-size: 1.1em;
+    background-color: var(--primary-color);
+  }
 }
 
 .btn:is(:hover, :focus) {

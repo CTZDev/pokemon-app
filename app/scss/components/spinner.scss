@@ -1,0 +1,94 @@
+@use "../util" as *;
+
+.spinner {
+  border-radius: 50%;
+  width: rem(280);
+  height: rem(280);
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+  filter: drop-shadow(4px 4px 4px black);
+  animation: spinner 1.4s linear 0s infinite both;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+  }
+
+  &::before {
+    background-color: red;
+    border-bottom: 4px solid black;
+    box-shadow: 0px 0px 62px -7px #000 inset;
+  }
+
+  &::after {
+    top: 50%;
+    bottom: 0;
+    border-top: 4px solid black;
+    background-color: white;
+    box-shadow: 0px 0px 70px -32px #000 inset;
+  }
+
+  &-loading {
+    border: 5px solid black;
+    width: rem(80);
+    height: rem(80);
+    border-radius: inherit;
+    position: relative;
+    z-index: 1;
+    background-color: rgb(104, 104, 105);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-radius: inherit;
+      top: 50%;
+      left: 50%;
+      border: 4px solid black;
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      width: rem(55);
+      height: rem(55);
+      background-color: white;
+    }
+
+    &::after {
+      width: rem(32);
+      height: rem(32);
+      background-color: rgba(255, 0, 0, 0.8);
+      filter: drop-shadow(1px 1px 2px black);
+    }
+  }
+  &-bubble {
+    position: absolute;
+    top: -100%;
+    right: -50%;
+    background-color: white;
+    border-radius: inherit;
+    width: rem(40);
+    height: rem(40);
+    filter: drop-shadow(2px 2px 3px black);
+    animation: spinner-center 0.8s alternate 0s infinite;
+
+    &::before {
+      content: "";
+      position: inherit;
+      top: 80%;
+      right: -60%;
+      background-color: inherit;
+      border-radius: inherit;
+      width: rem(25);
+      height: rem(25);
+    }
+  }
+}

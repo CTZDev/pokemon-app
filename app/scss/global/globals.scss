@@ -22,7 +22,6 @@ body {
   min-height: 100vh;
   font-size: var(--fz-sm);
   text-rendering: optimizeSpeed;
-  width: 100%;
 
   @include mq(small) {
     font-size: var(--fz-md);

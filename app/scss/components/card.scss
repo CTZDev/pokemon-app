@@ -27,9 +27,14 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: var(--primary-color);
-      transform: rotate(45deg) translate(-35%, -35%);
+      background: var(--background);
+      opacity: 0.75;
+      transform: rotate(45deg) translate(-36%, -39%);
       z-index: -1;
+
+      @include mq(small) {
+        transform: rotate(45deg) translate(-34%, -38%);
+      }
     }
   }
 
@@ -40,6 +45,8 @@
     padding: 0 0.8rem;
     margin-bottom: 1.2rem;
     color: var(--clr-white);
+    text-shadow: 2px 2px 2px black;
+    filter: drop-shadow(2px 2px 3px black);
 
     & > h2 {
       font-weight: normal;
@@ -48,9 +55,15 @@
 
   &-header-img {
     margin-bottom: 1.2rem;
+
     & > img {
       margin: 0 auto;
-      filter: drop-shadow(4px 4px 4px black);
+      filter: drop-shadow(4px 4px 6px black);
+
+      @include mq(small) {
+        width: rem(200);
+        height: rem(200);
+      }
     }
   }
 
@@ -59,7 +72,18 @@
     &-name {
       font-size: 1.3em;
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+
+      & > p {
+        color: #fff;
+        font-size: 1.6rem;
+        text-shadow: 2px 2px 2px black;
+        filter: drop-shadow(1px 1px 3px black);
+
+        @include mq(small) {
+          font-size: 1.9rem;
+        }
+      }
     }
 
     &-types {
@@ -73,10 +97,43 @@
         border-radius: rem(8);
         padding: rem(8) rem(16);
         font-weight: bold;
-        box-shadow: 0 0 rem(6) 0 rgba(0, 0, 0, 0.2);
+        font-size: 1.1em;
+        color: rgba(black, 0.75);
         background-color: var(--clr-white);
-        color: var(--primary-color);
+        box-shadow: 2px 2px 6px -4px #000;
       }
     }
   }
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 900ms, background 900ms;
+  transform-style: preserve-3d;
+  border-radius: rem(12);
+
+  &.is-active {
+    transform: rotateY(180deg);
+    background: white;
+
+    & > * {
+      z-index: 1;
+    }
+  }
+}
+
+.pokemon-block-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  backface-visibility: hidden;
+}
+
+.pokemon-block-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0%;
 }
