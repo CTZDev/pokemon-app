@@ -92,48 +92,182 @@
       justify-content: center;
       align-items: center;
       gap: rem(32);
+    }
+
+    &-type {
+      border-radius: rem(8);
+      padding: rem(8) rem(16);
+      font-weight: bold;
+      font-size: 1.1em;
+      color: rgba(black, 0.75);
+      background-color: var(--clr-white);
+      box-shadow: 2px 2px 6px -4px #000;
+    }
+  }
+}
+
+.flip-card {
+  &-header {
+    margin-bottom: 1rem;
+  }
+
+  &-hero {
+    margin-bottom: 1rem;
+    &-header {
+      margin-bottom: 1rem;
+      & h2 {
+        font-size: 1.8em;
+      }
+
+      & h3 {
+        font-size: 1.1em;
+      }
+    }
+    &-type {
+      display: flex;
+      flex-direction: column;
+      gap: rem(12);
 
       & > * {
-        border-radius: rem(8);
-        padding: rem(8) rem(16);
-        font-weight: bold;
-        font-size: 1.1em;
-        color: rgba(black, 0.75);
-        background-color: var(--clr-white);
-        box-shadow: 2px 2px 6px -4px #000;
+        @extend .pokemon-body-type;
+      }
+    }
+  }
+
+  &-body {
+    border: 1px solid black;
+    background-color: var(--clr-white);
+    color: black;
+    margin-right: -1.5rem;
+    margin-left: -1.5rem;
+    border-radius: 1rem;
+    font-size: 0.9em;
+  }
+
+  &-features-list {
+    margin-bottom: rem(8);
+
+    & > li {
+      text-align: center;
+      flex-basis: calc(100% / 3);
+
+      &.is-check {
+        border-bottom: 2px solid var(--primary-color);
+      }
+
+      & a {
+        display: block;
+        padding: rem(12);
+        text-decoration: none;
+        color: blue;
+      }
+    }
+  }
+
+  &-slider {
+    display: grid;
+    grid-template-columns: repeat(3, 100%);
+    transform: translate(-200%);
+
+    &-container {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      overflow: hidden;
+    }
+
+    &-aboutme {
+      &-text {
+        line-height: 1.6;
+        margin-bottom: rem(18);
+      }
+
+      &-measure {
+        gap: rem(24);
+        width: 80%;
+        margin: 0 auto;
+        padding: rem(8);
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px -1px #000;
+        margin-bottom: rem(24);
+      }
+
+      &-gender {
+        gap: 3rem;
+        & > div {
+          gap: 1rem;
+        }
+      }
+    }
+
+    &-evolution {
+      border: 1px solid red;
+
+      & h4 {
+        font-size: 1.2em;
+        margin-bottom: rem(18);
+      }
+
+      &-pokemon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > img {
+          margin-bottom: rem(6);
+        }
+      }
+    }
+
+    &-stats {
+      & > * {
+        margin-bottom: rem(12);
+      }
+    }
+
+    &-stat {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+
+      & > h4 {
+        flex-basis: 25%;
+      }
+
+      & .bar-progress {
+        width: rem(120);
+        border: 2px solid red;
       }
     }
   }
 }
 
-.card-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 900ms, background 900ms;
-  transform-style: preserve-3d;
-  border-radius: rem(12);
+// .flip-card-container {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   text-align: center;
+// padding-bottom: 0;
+// padding: 1.5rem;
+//   transition: transform 900ms, background 900ms;
+//   transform-style: preserve-3d;
+//   border-radius: rem(12);
 
-  &.is-active {
-    transform: rotateY(180deg);
-    background: white;
+//   &.is-active {
+//     transform: rotateY(180deg);
+//     background: white;
 
-    & > * {
-      z-index: 1;
-    }
-  }
-}
+//     & > * {
+//       z-index: 0;
+//     }
+//   }
+// }
 
-.pokemon-block-back {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  backface-visibility: hidden;
-}
-
-.pokemon-block-back {
-  transform: rotateY(180deg);
-  position: absolute;
-  top: 0%;
-}
+// .flip-card-back {
+//   width: 100%;
+//   height: 100%;
+//   border-radius: rem(8);
+//   backface-visibility: hidden;
+//   transform: rotateY(180deg);
+//   position: absolute;
+//   top: 0%;
+// }
