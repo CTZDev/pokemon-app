@@ -42,11 +42,16 @@
           <div class="pokemon-cards"></div>
         </div>
       </section>
-      <div class="spinner" id="spinner">
-        <div class="spinner-loading">
-          <div class="spinner-bubble"></div>
+      <section id="loding-pokemon">
+        <div class="spinner" id="spinner">
+          <div class="spinner-loading">
+            <div class="spinner-bubble"></div>
+          </div>
         </div>
-      </div>
+        <div class="message">
+          <p>Loading List Of Pokemons</p>
+        </div>
+      </section>
       <section class="button-actions">
         <ul class="button-actions-list">
           <li><a href="#" id="prev" class="btn btn--actions">Previous</a></li>
@@ -56,92 +61,96 @@
     </main>
 
     <template id="template-pokemon-card">
-      <article class="pokemon-card">
-        <div class="pokemon-header">
-          <div class="pokemon-header-content">
-            <h2 class="pokemon-header-title">#001</h2>
-            <figure class="pokemon-header-favorite">
-              <img width="28" height="28" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
+      <section class="pokemon-card-container">
+        <article class="pokemon-card">
+          <div class="pokemon-header">
+            <div class="pokemon-header-content">
+              <h2 class="pokemon-header-title">#001</h2>
+              <button type="button" class="flip-card-header-favorite btn-reset">
+                <img width="28" height="28" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
+              </button>
+            </div>
+            <figure class="pokemon-header-img">
+              <img width="160" height="160" src="./images/profile-1.jpg" alt="" loading="lazy" />
             </figure>
           </div>
-          <figure class="pokemon-header-img">
-            <img width="160" height="160" src="./images/profile-1.jpg" alt="" loading="lazy" />
-          </figure>
-        </div>
-        <div class="pokemon-body">
-          <div class="pokemon-body-name">
-            <p>Name Pokemon</p>
+          <div class="pokemon-body">
+            <div class="pokemon-body-name">
+              <p>Name Pokemon</p>
+            </div>
+            <ul class="pokemon-body-types" data-custom-types-pokemon></ul>
           </div>
-          <ul class="pokemon-body-types"></ul>
-        </div>
-        <div class="pokemon-footer">
-          <button class="btn btn-info">More Info</button>
-        </div>
-      </article>
-    </template>
-    <template id="template-pokemon-cardReverse">
-      <div class="flip-card">
-        <div class="flip-card-container">
-          <article class="flip-card-back">
-            <div class="flip-card-header flex flex-jc-sb flex-ai-c">
-              <figure class="flip-card-header-favorite">
-                <img width="28" height="28" src="./images/chevron-left-solid.svg" alt="Return Card Main" loading="lazy" />
-              </figure>
-              <figure class="flip-card-header-favorite">
-                <img width="28" height="28" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
-              </figure>
-            </div>
-            <div class="flip-card-hero">
-              <div class="flip-card-hero-header flex flex-jc-sb flex-ai-c">
-                <h2>Bulbasaur</h2>
-                <h3>#001</h3>
+          <div class="pokemon-footer">
+            <button class="btn btn-info">More Info</button>
+          </div>
+        </article>
+        <article class="flip-card">
+          <div class="flip-card-container">
+            <article class="flip-card-back">
+              <div class="flip-card-header flex flex-jc-sb flex-ai-c">
+                <button type="button" class="flip-card-header-favorite btn-reset" data-button-backward>
+                  <img width="24" height="24" src="./images/chevron-left-solid.svg" alt="Return Card Main" loading="lazy" />
+                </button>
+                <button type="button" class="flip-card-header-favorite btn-reset">
+                  <img width="24" height="24" src="./images/heart-regular.svg" alt="Favorite" loading="lazy" />
+                </button>
               </div>
-              <div class="flip-card-hero-content flex flex-ai-c flex-jc-sb">
-                <ul class="flip-card-hero-type"></ul>
-                <figure class="flip-card-hero-img">
-                  <img src="./images/profile-1.jpg" alt="" loading="lazy" />
-                </figure>
+              <div class="flip-card-hero">
+                <div class="flip-card-hero-header flex flex-jc-sb flex-ai-c">
+                  <h2>Bulbasaur</h2>
+                  <h3>#001</h3>
+                </div>
+                <div class="flip-card-hero-content flex flex-ai-c flex-jc-sb">
+                  <ul class="flip-card-hero-types" data-custom-types-pokemon></ul>
+                  <figure class="flip-card-hero-img">
+                    <img width="52" height="52" src="./images/profile-1.jpg" alt="" loading="lazy" />
+                  </figure>
+                </div>
               </div>
-            </div>
-            <div class="flip-card-body">
-              <nav class="flip-card-features">
-                <ul class="flip-card-features-list flex flex-ai-c">
-                  <li><a href="#" data-index="1">About</a></li>
-                  <li><a href="#" data-index="2">Stats</a></li>
-                </ul>
-              </nav>
-              <div class="flip-card-slider-container">
-                <section class="flip-card-slider">
-                  <article class="flip-card-slider-aboutme">
-                    <p class="flip-card-slider-aboutme-text"></p>
-                    <div class="flip-card-slider-aboutme-measure flex flex-ai-c flex-jc-c">
-                      <div class="flip-card-slider-aboutme-measure-height">
-                        <h4>Height</h4>
-                        <p>2'3'5'cm</p>
+              <div class="flip-card-body">
+                <nav class="flip-card-features">
+                  <ul class="flip-card-features-list flex flex-ai-c">
+                    <li><button type="button" data-flipCard-about>About</button></li>
+                    <li><button type="button" data-flipCard-stats>Stats</button></li>
+                  </ul>
+                </nav>
+                <div class="flip-card-slider-container">
+                  <section class="flip-card-slider">
+                    <article class="flip-card-slider-aboutme">
+                      <p class="flip-card-slider-aboutme-text"></p>
+                      <div class="flip-card-slider-aboutme-measure flex flex-ai-c flex-jc-c">
+                        <div class="flip-card-slider-aboutme-measure-height">
+                          <h4>Height</h4>
+                          <p>measure</p>
+                        </div>
+                        <div class="flip-card-slider-aboutme-measure-weight">
+                          <h4>Weight</h4>
+                          <p>measure</p>
+                        </div>
                       </div>
-                      <div class="flip-card-slider-aboutme-measure-weight">
-                        <h4>Weight</h4>
-                        <p>4libras (6.9)</p>
+                      <div class="flip-card-slider-aboutme-gender flex flex-ai-c">
+                        <h4>Habilities</h4>
+                        <ul class="flip-card-slider-aboutme-gender-list flex flex-jc-sb"></ul>
                       </div>
-                    </div>
-                    <div class="flip-card-slider-aboutme-gender flex">
-                      <h4>Habilities</h4>
-                      <ul class="flip-card-slider-aboutme-gender-list flex flex-jc-sb"></ul>
-                    </div>
-                  </article>
-                  <article class="flip-card-slider-stats"></article>
-                </section>
+                    </article>
+                    <article class="flip-card-slider-stats"></article>
+                  </section>
+                </div>
               </div>
-            </div>
-          </article>
-        </div>
-      </div>
+            </article>
+          </div>
+        </article>
+      </section>
     </template>
     <template id="template-card-slider-stat">
       <div class="flip-card-slider-stat">
-        <h4>HP</h4>
-        <span>45</span>
-        <div class="bar-progress"></div>
+        <div class="flex flex-ai-c">
+          <h4>stat</h4>
+          <span>value</span>
+        </div>
+        <div class="bar-progress">
+          <span class="bar"></span>
+        </div>
       </div>
     </template>
   </body>

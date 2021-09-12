@@ -16,6 +16,17 @@
   text-shadow: 1px 1px 4px black;
   box-shadow: 0 0 5px -1px black;
 
+  &-reset {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    & > * {
+      pointer-events: none;
+    }
+  }
+
   &--actions {
     min-width: 6.4rem;
     font-size: 1.1em;

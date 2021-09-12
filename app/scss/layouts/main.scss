@@ -34,3 +34,34 @@ main {
     }
   }
 }
+
+#loding-pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+
+  & .message {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    padding: 1rem;
+    padding-left: rem(56);
+    border-radius: rem(8);
+    position: relative;
+    box-shadow: 0 0 10px -2px black;
+    animation: spinner-message 1s alternate 0s infinite;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      transform: translateY(50%);
+      width: rem(32);
+      height: rem(32);
+      background: url("../images/pokeball-pokemon-svgrepo-com.svg") no-repeat center;
+    }
+  }
+}
