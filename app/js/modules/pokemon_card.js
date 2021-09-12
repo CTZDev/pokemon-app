@@ -8,12 +8,15 @@ const getDataPokemon = async () => {
     const $cards = d.querySelector(".pokemon-cards");
     const $loading = d.getElementById("loding-pokemon");
     $loading.style.display = "flex";
+
     for (let i = offset; i <= offset + limit; i++) {
       let urlDataPokemon = `https://pokeapi.co/api/v2/pokemon/${i}/`;
       let urlSpeciesPokemon = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;
       const responses = await Promise.all([fetch(urlDataPokemon), fetch(urlSpeciesPokemon)]);
+
       const [responseDataPokemon, responseSpeciesPokemon] = responses;
-      if (!responseDataPokemon.ok || !responseSpeciesPokemon.ok) throw { status: response.status, statusText: response.statusText };
+      if (!responseDataPokemon.ok || !responseSpeciesPokemon.ok)
+        throw { status: responses[0].status || responses[1].status, statusText: responses[0].statusText || responses[1].statusText };
       //First request
       const dataPokemon = await responseDataPokemon.json();
       //Second request
@@ -169,6 +172,19 @@ d.addEventListener("click", (e) => {
       removeChildNodes(d.querySelector(".pokemon-cards"));
       getDataPokemon();
     }
+  }
+
+  //Aplies for the hearts front and reverse Card
+  if (e.target.matches(".pokemon-card .flip-card-header-favorite-heart")) {
+    e.target.classList.toggle("is-active");
+    const $heartReverse = e.target.closest(".pokemon-card").nextElementSibling.querySelector(".flip-card-header-favorite-heart");
+    $heartReverse.classList.toggle("is-active");
+  }
+
+  if (e.target.matches(".flip-card .flip-card-header-favorite-heart")) {
+    e.target.classList.toggle("is-active");
+    const $heartFront = e.target.closest(".flip-card").previousElementSibling.querySelector(".flip-card-header-favorite-heart");
+    $heartFront.classList.toggle("is-active");
   }
 });
 

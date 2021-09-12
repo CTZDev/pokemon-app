@@ -31,7 +31,7 @@
       bottom: 0;
       background: var(--background);
       opacity: 0.75;
-      transform: rotate(45deg) translate(-36%, -39%);
+      transform: rotate(45deg) translate(-38%, -42%);
       z-index: -1;
 
       @include mq(small) {
@@ -62,7 +62,11 @@
   }
 
   &-header-img {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.6rem;
+
+    @include mq(small) {
+      margin-bottom: 1.2rem;
+    }
 
     & > img {
       margin: 0 auto;
@@ -77,10 +81,15 @@
 
   &-body {
     margin-bottom: rem(24);
+
     &-name {
       font-size: 1.3em;
       font-weight: bold;
-      margin-bottom: 1.2rem;
+      margin-bottom: 2rem;
+
+      @include mq(small) {
+        margin-bottom: 1.2rem;
+      }
 
       & > p {
         color: #fff;
@@ -138,8 +147,19 @@
   &-header {
     margin-bottom: 1rem;
 
-    &-favorite {
+    &-favorite,
+    &-favorite-hearth {
       filter: drop-shadow(3px 3px 4px black);
+    }
+
+    &-favorite {
+      &-heart {
+        animation: spinner-message 1.4s alternate 0s infinite both;
+
+        &.is-active {
+          filter: invert(90%) sepia(100%) saturate(4000%) drop-shadow(2px 2px 2px white);
+        }
+      }
     }
   }
 
