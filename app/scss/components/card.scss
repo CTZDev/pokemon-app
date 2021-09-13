@@ -6,7 +6,7 @@
 
   &-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 365px));
     justify-content: center;
     gap: rem(28);
   }

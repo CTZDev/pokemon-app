@@ -173,14 +173,13 @@ d.addEventListener("click", (e) => {
       getDataPokemon();
     }
   }
-
   //Aplies for the hearts front and reverse Card
   if (e.target.matches(".pokemon-card .flip-card-header-favorite-heart")) {
     e.target.classList.toggle("is-active");
     const $heartReverse = e.target.closest(".pokemon-card").nextElementSibling.querySelector(".flip-card-header-favorite-heart");
     $heartReverse.classList.toggle("is-active");
   }
-
+  //Aplies for the hearts front and reverse Card
   if (e.target.matches(".flip-card .flip-card-header-favorite-heart")) {
     e.target.classList.toggle("is-active");
     const $heartFront = e.target.closest(".flip-card").previousElementSibling.querySelector(".flip-card-header-favorite-heart");
