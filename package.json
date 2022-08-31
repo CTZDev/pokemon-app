@@ -26,7 +26,6 @@
     "gulp-better-rollup": "^4.0.1",
     "gulp-sass": "^5.0.0",
     "gulp-terser": "^2.0.1",
-    "rollup": "^2.56.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",

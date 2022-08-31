@@ -2,27 +2,79 @@ const d = document;
 let offset = 1;
 let limit = 5;
 
-const getDataPokemon = async () => {
+/* DATA CAPTURE FOR THE COMBOBOX TYPE POKEMON */
+let isActiveTypePokemon = true;
+let typePokemonFound = 0;
+let valueIDInitial = 1;
+const nextMaxPokemon = 6;
+const QUANTITY_OF_POKEMONS = 898;
+
+/*DATA CAPTURE FOR THE TYPE POKEMON */
+let arrayAuxOfTypePokemons = [];
+let arrayOfTypePokemons = [];
+let countBtnClicked = 0;
+let activeBtnPrev = true;
+
+const getDataPokemon = async (typePokemon = null) => {
   try {
     const $fragment = d.createDocumentFragment();
     const $cards = d.querySelector(".pokemon-cards");
-    const $loading = d.getElementById("loding-pokemon");
+    const $loading = d.getElementById("loading-pokemon");
     $loading.style.display = "flex";
 
-    for (let i = offset; i <= offset + limit; i++) {
-      let urlDataPokemon = `https://pokeapi.co/api/v2/pokemon/${i}/`;
-      let urlSpeciesPokemon = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;
-      const responses = await Promise.all([fetch(urlDataPokemon), fetch(urlSpeciesPokemon)]);
+    if (typePokemon == null || typePokemon === "Mostrar todos") {
+      isActiveTypePokemon = true; // Comprobación para el prev y next
+      for (let i = offset; i <= offset + limit; i++) {
+        let urlDataPokemon = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+        let urlSpeciesPokemon = `https://pokeapi.co/api/v2/pokemon-species/${i}/`;
+        const responses = await Promise.all([fetch(urlDataPokemon), fetch(urlSpeciesPokemon)]);
 
-      const [responseDataPokemon, responseSpeciesPokemon] = responses;
-      if (!responseDataPokemon.ok || !responseSpeciesPokemon.ok)
-        throw { status: responses[0].status || responses[1].status, statusText: responses[0].statusText || responses[1].statusText };
-      //First request
-      const dataPokemon = await responseDataPokemon.json();
-      //Second request
-      const speciesPokemon = await responseSpeciesPokemon.json();
-      drawCardPokemon(dataPokemon, speciesPokemon, i, $fragment);
+        const [responseDataPokemon, responseSpeciesPokemon] = responses;
+        if (!responseDataPokemon.ok || !responseSpeciesPokemon.ok)
+          throw { status: responses[0].status || responses[1].status, statusText: responses[0].statusText || responses[1].statusText };
+
+        const dataPokemon = await responseDataPokemon.json(); //First request
+        const speciesPokemon = await responseSpeciesPokemon.json(); //Second request
+        drawCardPokemon(dataPokemon, speciesPokemon, i, $fragment);
+      }
+    } else {
+      isActiveTypePokemon = false; // Comprobación para el prev y next
+
+      while (valueIDInitial <= QUANTITY_OF_POKEMONS && nextMaxPokemon > typePokemonFound) {
+        let urlDataPokemon = `https://pokeapi.co/api/v2/pokemon/${valueIDInitial}/`;
+        let urlSpeciesPokemon = `https://pokeapi.co/api/v2/pokemon-species/${valueIDInitial}/`;
+        const responses = await Promise.all([fetch(urlDataPokemon), fetch(urlSpeciesPokemon)]);
+
+        const [responseDataPokemon, responseSpeciesPokemon] = responses;
+        if (!responseDataPokemon.ok || !responseSpeciesPokemon.ok)
+          throw { status: responses[0].status || responses[1].status, statusText: responses[0].statusText || responses[1].statusText };
+
+        const dataPokemon = await responseDataPokemon.json(); //First request
+        const speciesPokemon = await responseSpeciesPokemon.json(); //Second request
+
+        const types = dataPokemon?.types;
+        types.map((type) => {
+          const {
+            type: { name },
+          } = type;
+
+          //Seleccionar solo al tipo de pokemon
+          if (typePokemon.toLowerCase() === name) {
+            typePokemonFound++;
+            drawCardPokemon(dataPokemon, speciesPokemon, valueIDInitial, $fragment);
+          }
+        });
+
+        if (typePokemonFound === 1 && activeBtnPrev) {
+          arrayAuxOfTypePokemons.push(valueIDInitial);
+          arrayOfTypePokemons = Array.from([...new Set(arrayAuxOfTypePokemons)]);
+          activeBtnPrev = false;
+        }
+
+        valueIDInitial++;
+      }
     }
+
     $cards.append($fragment);
     $loading.style.display = "none";
   } catch (error) {
@@ -159,18 +211,35 @@ const formattedId = (id) => "#" + `00${id}`.slice(-3);
 
 d.addEventListener("click", (e) => {
   if (e.target.matches("#prev")) {
-    if (offset !== 1) {
+    if (offset !== 1 && isActiveTypePokemon) {
       offset -= 6;
       removeChildNodes(d.querySelector(".pokemon-cards"));
       getDataPokemon();
+    } else {
+      typePokemonFound = 0;
+      let $typePokemon = d.getElementById("form-pokemon").querySelector(".custom-options .custom-option.selected > span").textContent;
+
+      if (arrayOfTypePokemons.length > 0 && countBtnClicked > 0) {
+        countBtnClicked--;
+        valueIDInitial = arrayOfTypePokemons[countBtnClicked];
+        removeChildNodes(d.querySelector(".pokemon-cards"));
+        getDataPokemon($typePokemon);
+      }
     }
   }
 
   if (e.target.matches("#next")) {
-    if (offset <= 898) {
+    if (offset <= QUANTITY_OF_POKEMONS && isActiveTypePokemon) {
       offset += 6;
       removeChildNodes(d.querySelector(".pokemon-cards"));
       getDataPokemon();
+    } else {
+      typePokemonFound = 0;
+      countBtnClicked++;
+      activeBtnPrev = true;
+      let $typePokemon = d.getElementById("form-pokemon").querySelector(".custom-options .custom-option.selected > span").textContent;
+      removeChildNodes(d.querySelector(".pokemon-cards"));
+      getDataPokemon($typePokemon);
     }
   }
   //Aplies for the hearts front and reverse Card
@@ -184,6 +253,19 @@ d.addEventListener("click", (e) => {
     e.target.classList.toggle("is-active");
     const $heartFront = e.target.closest(".flip-card").previousElementSibling.querySelector(".flip-card-header-favorite-heart");
     $heartFront.classList.toggle("is-active");
+  }
+
+  //Seleccionar combo y capturar texto
+  if (e.target.matches("custom-options") || e.target.matches(".custom-options *")) {
+    const $typePokemon = e.target.querySelector(".custom-option > span").textContent;
+    valueIDInitial = 1;
+    typePokemonFound = 0;
+    countBtnClicked = 0;
+    arrayAuxOfTypePokemons.length = 0;
+    arrayOfTypePokemons.length = 0;
+    activeBtnPrev = true;
+    removeChildNodes(d.querySelector(".pokemon-cards"));
+    getDataPokemon($typePokemon);
   }
 });
 

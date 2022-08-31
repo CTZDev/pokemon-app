@@ -18,11 +18,21 @@ const getTypePokemon = async () => {
 const showTypePokemon = (typesOfPokemon) => {
   const $containerTypeOfPokemon = d.querySelector("ul[data-custom-types]");
 
-  typesOfPokemon.map(({ name }, i) => {
+  const $li = d.createElement("li");
+  const $span = d.createElement("span");
+  const $img = d.createElement("img");
+  $li.classList.add("custom-option", "selected");
+  $span.textContent = "Mostrar todos";
+  $img.setAttribute("src", `./images/type-pokemons/Icon_Mostrar todos.png`);
+  $img.setAttribute("alt", "Mostrar todos");
+  $li.append($img, $span);
+  $li.dataset.value = "Mostrar todos";
+  $fragment.append($li);
+
+  typesOfPokemon.map(({ name }) => {
     const $li = d.createElement("li");
     const $span = d.createElement("span");
     const $img = d.createElement("img");
-    if (i === 0) $li.classList.add("custom-option", "selected");
     $span.textContent = changeTextCapitalized(name);
     $img.setAttribute("src", `./images/type-pokemons/Icon_${name}.png`);
     $img.setAttribute("alt", name);
@@ -31,8 +41,9 @@ const showTypePokemon = (typesOfPokemon) => {
     $li.dataset.value = name;
     $fragment.append($li);
   });
+
   $containerTypeOfPokemon.append($fragment);
-  selectedMenuPokemon(typesOfPokemon[0]);
+  selectedMenuPokemon({ name: "Mostrar todos" });
 };
 
 const selectedMenuPokemon = (firstTypePokemon) => {
