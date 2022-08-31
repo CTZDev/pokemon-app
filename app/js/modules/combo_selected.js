@@ -34,7 +34,7 @@ const showTypePokemon = (typesOfPokemon) => {
     const $span = d.createElement("span");
     const $img = d.createElement("img");
     $span.textContent = changeTextCapitalized(name);
-    $img.setAttribute("src", `./images/type-pokemons/Icon_${name}.png`);
+    $img.setAttribute("src", `./images/type-pokemons/Icon_${changeTextCapitalized(name)}.png`);
     $img.setAttribute("alt", name);
     $li.append($img, $span);
     $li.classList.add("custom-option");
