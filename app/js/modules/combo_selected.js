@@ -80,10 +80,9 @@ const loadingTypePokemon = (firstTypePokemon = null, parentElement = d, textOpti
   const $selectTypePokemon = parentElement.querySelector(".select-trigger-content > span");
   const $selectTypePokemonIcon = parentElement.querySelector(".select-trigger-content > img");
 
-  const nameTypePokemon = firstTypePokemon?.name || textOption;
+  const nameTypePokemon = firstTypePokemon?.name || changeTextCapitalized(textOption);
   $selectTypePokemon.textContent = changeTextCapitalized(nameTypePokemon);
-  $selectTypePokemonIcon.setAttribute("src", `./images/type-pokemons/Icon_${nameTypePokemon}.png`);
-  console.log(nameTypePokemon);
+  $selectTypePokemonIcon.setAttribute("src", `./images/type-pokemons/Icon_${changeTextCapitalized(nameTypePokemon)}.png`);
   $selectTypePokemonIcon.setAttribute("alt", nameTypePokemon);
 };
 
