@@ -34,7 +34,7 @@ const showTypePokemon = (typesOfPokemon) => {
     const $span = d.createElement("span");
     const $img = d.createElement("img");
     $span.textContent = changeTextCapitalized(name);
-    $img.setAttribute("src", `./images/type-pokemons/Icon_${name.toLowerCase()}.png`);
+    $img.setAttribute("src", `./images/type-pokemons/Icon_${name}.png`);
     $img.setAttribute("alt", name);
     $li.append($img, $span);
     $li.classList.add("custom-option");
@@ -82,7 +82,8 @@ const loadingTypePokemon = (firstTypePokemon = null, parentElement = d, textOpti
 
   const nameTypePokemon = firstTypePokemon?.name || textOption;
   $selectTypePokemon.textContent = changeTextCapitalized(nameTypePokemon);
-  $selectTypePokemonIcon.setAttribute("src", `./images/type-pokemons/Icon_${nameTypePokemon.toLowerCase()}.png`);
+  $selectTypePokemonIcon.setAttribute("src", `./images/type-pokemons/Icon_${nameTypePokemon}.png`);
+  console.log(nameTypePokemon);
   $selectTypePokemonIcon.setAttribute("alt", nameTypePokemon);
 };
 
