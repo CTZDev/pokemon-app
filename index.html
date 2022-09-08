@@ -35,8 +35,11 @@
               </div>
             </div>
             <div class="form-group">
-              <h2>Select Pokemon</h2>
-              <input type="text" id="txtSelectPokemon" />
+              <h2>Name initial Pokemon</h2>
+              <input type="text" id="txtSelectPokemon" placeholder="Type only 1 characters" maxlength="1" />
+            </div>
+            <div class="form-group flex-as-e">
+              <button class="btn btn--actions" id="btnSearchPokemon" type="button">🔍 Search</button>
             </div>
           </div>
         </div>
@@ -58,8 +61,8 @@
       </section>
       <section class="button-actions">
         <ul class="button-actions-list">
-          <li><a href="#" id="prev" class="btn btn--actions">Previous</a></li>
-          <li><a href="#" id="next" class="btn btn--actions">Next</a></li>
+          <li><button id="prev" class="btn btn--actions">Previous</button></li>
+          <li><button id="next" class="btn btn--actions">Next</button></li>
         </ul>
       </section>
     </main>

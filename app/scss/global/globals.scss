@@ -84,6 +84,11 @@ picture {
     align-items: center;
   }
 
+  &-as-e {
+    align-self: flex-end;
+  }
+
+
   &-fd-c {
     flex-direction: column;
   }

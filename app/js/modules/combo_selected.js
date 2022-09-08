@@ -22,11 +22,11 @@ const showTypePokemon = (typesOfPokemon) => {
   const $span = d.createElement("span");
   const $img = d.createElement("img");
   $li.classList.add("custom-option", "selected");
-  $span.textContent = "Mostrar todos";
-  $img.setAttribute("src", `./images/type-pokemons/Icon-Mostrar todos.png`);
-  $img.setAttribute("alt", "Mostrar todos");
+  $span.textContent = "Show All";
+  $img.setAttribute("src", `./images/type-pokemons/Icon-Show All.png`);
+  $img.setAttribute("alt", "Show All");
   $li.append($img, $span);
-  $li.dataset.value = "Mostrar todos";
+  $li.dataset.value = "Show All";
   $fragment.append($li);
 
   typesOfPokemon.map(({ name }) => {
@@ -43,7 +43,7 @@ const showTypePokemon = (typesOfPokemon) => {
   });
 
   $containerTypeOfPokemon.append($fragment);
-  selectedMenuPokemon({ name: "Mostrar todos" });
+  selectedMenuPokemon({ name: "Show All" });
 };
 
 const selectedMenuPokemon = (firstTypePokemon) => {

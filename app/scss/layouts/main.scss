@@ -12,7 +12,7 @@ main {
 
 .form-container {
   flex-wrap: wrap;
-  gap: rem(24);
+  gap: rem(42);
   margin-bottom: rem(32);
 }
 
@@ -30,6 +30,10 @@ main {
     height: rem(40);
     font-family: var(--font-family);
     padding: 0.4rem;
+  }
+
+  .btn {
+    margin-left: -2.2rem;
   }
 }
 
